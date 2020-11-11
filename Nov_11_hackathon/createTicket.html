@@ -32,16 +32,17 @@ body{
             <label for="subject">Subject<sup style="color:red">*</sup></label>
             <input type="text" class="form-control" id="subject">
           </div>
+          
         <div class="form-group">
           <label for="typeselect">Type</sup></label>
           <select class="form-control" id="typeselect">
             <option>--</option>
-            <option>Question</option>
-            <option>Incident</option>
-            <option>Problem</option>
-            <option>Feature</option>
-            <option>Request</option>
-            <option>Returns</option>
+            <option value="Question">Question</option>
+            <option value="Incident">Incident</option>
+            <option value="Problem">Problem</option>
+            <option value="Feature">Feature</option>
+            <option value="Request">Request</option>
+            <option value="Returns">Returns</option>
           </select>
         </div>
         <div class="form-group">
@@ -55,36 +56,36 @@ body{
             <label for="status">Status<sup style="color:red">*</sup></sup></label>
             <select class="form-control" id="status">
               <option></option>
-              <option>Open</option>
-              <option>Pending</option>
-              <option>Resolved</option>
-              <option>Closed</option>
-              <option>Waiting on Customer</option>
-              <option>Waiting on Third Party</option>
+              <option value=2>Open</option>
+              <option value=3>Pending</option>
+              <option value=4>Resolved</option>
+              <option value=5>Closed</option>
+              <option value="Waiting1">Waiting on Customer</option>
+              <option value="Waiting2">Waiting on Third Party</option>
             </select>
           </div>
           <div class="form-group">
             <label for="priority">Priority<sup style="color:red">*</sup></sup></label>
             <select class="form-control" id="priority">
               <option></option>
-              <option>Low</option>
-              <option>Medium</option>
-              <option>High</option>
-              <option>Urgent</option>
+              <option value=1>Low</option>
+              <option value=2>Medium</option>
+              <option value=3>High</option>
+              <option value=4>Urgent</option>
             </select>
           </div>
           <div class="form-group">
             <label for="groupselect">Group</label>
             <select class="form-control" id="groupselect">
               <option>--</option>
-              <option>Account Managers</option>
-              <option>Billing</option>
-              <option>Escalations</option>
-              <option>Product Management</option>
-              <option>QA</option>
-              <option>Replacements</option>
-              <option>Sales</option>
-              <option>Shipping and Delivery</option>
+              <option value="8000">Account Managers</option>
+              <option value="8001">Billing</option>
+              <option value='8002'>Escalations</option>
+              <option value='8003'>Product Management</option>
+              <option value="8004">QA</option>
+              <option value="8005">Replacements</option>
+              <option value="8006">Sales</option>
+              <option value="8007">Shipping and Delivery</option>
             </select>
           </div>
           <div class="form-group">
@@ -92,8 +93,8 @@ body{
             <input type="text" class="form-control" id="agentname" value='Joey Tribbiani'>
           </div>
         <div class="form-group">
-          <label for="desc">Description<sup style="color:red">*</sup></label>
-          <textarea class="form-control" id="desc" rows="3"></textarea>
+          <label for="description">Description<sup style="color:red">*</sup></label>
+          <textarea class="form-control" id="description" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label for="tagticket">Tags</label>
@@ -101,35 +102,45 @@ body{
           </div>
         <div class="row">
             <div class="col-md-11">
-        <button type="submit" class="btn btn-success">Create</button>
+        <button type="button" class="btn btn-success" onclick='createNew()'>Create</button>
         </div>
             <div class="col-12 col-md-1">
         <button type="reset" class="btn btn-danger" onclick='redirectpage()'>Close</button></div>
         </div>
       </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src='script.js'></script>
     <script>
         $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+
+
+function createNew(){
+    datas={description:document.getElementById('description').value, 
+subject: document.getElementById('subject').value,
+priority:+(document.getElementById('priority').value), 
+status: +(document.getElementById('status').value),
+group_id:+(document.getElementById('groupselect').value),
+requester_id:Math.floor((Math.random() * 10000) + 1)
+}
+    console.log(datas)
+    fetch("https://newaccount1605092002696.freshdesk.com/api/v2/tickets", {
+  body:JSON.stringify(datas) ,
+  headers: {
+    Authorization: "Basic SXBYNDV0dmdDOU43cGlDSEhmY0U6WA==",
+    "Content-Type": "application/json"
+  },
+  method: "POST"
+})
+    .then((resp)=>{
+        return resp.json()
+    }).then((result)=>{
+        console.log(result);
+}).catch((err)=>{console.log(err)})
+//getData()
+}
+
     </script>
     </body>
     </html>
