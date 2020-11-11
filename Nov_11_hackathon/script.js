@@ -7,3 +7,4 @@ function selectModal(){
 function redirectpage() {
     location.replace("index.html")
   }
+
