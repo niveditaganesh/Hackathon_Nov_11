@@ -34,10 +34,12 @@ body{
     <option id='newcontact' value='NEWCONTACT'>New Contact</option>
 </select>
 </div> 
+<div id='listTicket' class='container-fluid'>
+    <a type="button" href='tickets.html' class='btn btn-dark' >List Tickets</a>
+</div>
 
 
 
-<!-- Modal when adding comment for upload -->
 <!-- Modal -->
 <div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -95,31 +97,31 @@ body{
                     <select class="form-control" id="language">
                         <option>--</option>
                         <option selected>(GMT-05:00) Eastern Time (US & Canada)</option>
-                      <option>(GMT-05:00) Indiana (East)</option>
-                      <option>(GMT-10:00) Hawaii</option>
-                      <option>(GMT+00:00) UTC</option>
-                      <option>(GMT+00:00) Dublin</option>
-                      <option>(GMT+01:00) Belgrade</option>
-                      <option>(GMT+04:30) Kabul</option>
-                      <option>(GMT+05:30) Chennai</option>
-                      <option>(GMT+05:45) Kathmandu</option>
-                      <option>(GMT+06:30) Rangoon</option>
+                      <option value="Indiana">(GMT-05:00) Indiana (East)</option>
+                      <option value='Hawaii'>(GMT-10:00) Hawaii</option>
+                      <option value='UTC'>(GMT+00:00) UTC</option>
+                      <option value='Dublin'>(GMT+00:00) Dublin</option>
+                      <option value='Belgrade'>(GMT+01:00) Belgrade</option>
+                      <option value='Kabul'>(GMT+04:30) Kabul</option>
+                      <option value='Chennai'>(GMT+05:30) Chennai</option>
+                      <option value='Kathmandu'>(GMT+05:45) Kathmandu</option>
+                      <option value='Rangoon'>(GMT+06:30) Rangoon</option>
                     </select>
                   </div>
                 <div class="form-group">
                     <label for="language">Language</label>
                     <select class="form-control" id="language">
                         <option>--</option>
-                        <option>Arabian</option>
-                      <option selected>English</option>
-                      <option>Estonian</option>
-                      <option>Filipino</option>
-                      <option>Finnish</option>
-                      <option>French</option>
-                      <option>German</option>
-                      <option>Tamil</option>
-                      <option>Telugu</option>
-                      <option>Vietnamese</option>
+                        <option value='Arabian'>Arabian</option>
+                      <option value='English' selected>English</option>
+                      <option value='Estonian'>Estonian</option>
+                      <option value='Filipino'>Filipino</option>
+                      <option value='Finnish'>Finnish</option>
+                      <option value='French'>French</option>
+                      <option value='German'>German</option>
+                      <option value='Tamil'>Tamil</option>
+                      <option value='Telugu'>Telugu</option>
+                      <option value='Vietnamese'>Vietnamese</option>
                     </select>
                   </div>
                 <div class="form-group">
@@ -141,14 +143,7 @@ body{
     </div>
   </div>
 
-
-
-
-
-
-
-
-
+ 
     <script src='script.js'></script>
 
     <script>
